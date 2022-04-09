@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import React from 'react'
 
 export default class PaymentForm extends React.Component {
