@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Payment Nextjs</title>
+        <title>Payment Next.js</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
