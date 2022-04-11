@@ -1,10 +1,15 @@
 import React from 'react'
 
+let PayzenJS;
+
 export default class PaymentForm extends React.Component {
 
   async componentDidMount() {
     // la lib payzenjs utilise window en test pour afficher des erreurs dans la console => import après que le component soit mount
-    const PayzenJS = require('PayzenJS/payzenjs');
+    PayzenJS = require('PayzenJS/payzenjs');
+  }
+
+  async pay(event) {
     PayzenJS.go({		
       // plateforme Payzen à utiliser, ne pas changer
       target: "secure.osb.pf",
@@ -43,6 +48,9 @@ export default class PaymentForm extends React.Component {
   }
 
   render() {
-    return <div id="paymentCanvas"/>;
+    return <div>
+      <button onClick={this.pay}>Payer</button>
+      <div id="paymentCanvas"/>
+    </div>;
   }
 }
