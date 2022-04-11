@@ -19,20 +19,24 @@ export default class PaymentForm extends React.Component {
       * cf. doc : https://secure.osb.pf/doc/fr-FR/form-payment/standard-payment/gerer-les-moyens-de-paiement-proposes-a-l-acheteur.html
       */
       orderData: {
+          vads_action_mode: "INTERACTIVE",
           vads_order_id: `TEST-${Math.round(Math.random() * 1000)}`,
           vads_site_id: process.env.NEXT_PUBLIC_PAYZEN_SITE_ID,
           vads_ctx_mode: "TEST",
           vads_amount: "100",
-          vads_currency: "953",
-          vads_capture_delay: "0",
-          vads_payment_cards: "", // laisser vide
+          vads_currency: "953", // XPF
+          vads_payment_cards: "", // laisser vide pour afficher tous les types de cartes
           vads_language: "fr", // laisser 'fr' car par défaut c'est la langue 'en'
-          // vads_return_mode: "POST",
-          vads_url_return: `http://${process.env.NEXT_PUBLIC_FRONTEND_HOST}:${process.env.NEXT_PUBLIC_FRONTEND_PORT}/payment-result`,
-          vads_validation_mode: "1"
+          vads_theme_config: 'MODE_IFRAME=false;FORM_TARGET=_top', // affichage et comportement du theme, MODE_IFRAME=false => affichage complet, FORM_TARGET=_top => navigation
+          vads_redirect_success_timeout: 5, // timeout du redirect après paiement accepté
+          vads_redirect_error_timeout: 3, // timeout du redirect après paiement refusé
+          vads_url_success: `http://${process.env.NEXT_PUBLIC_FRONTEND_HOST}:${process.env.NEXT_PUBLIC_FRONTEND_PORT}/payment-result/success`, // url retour paiement accepté
+          vads_url_return: `http://${process.env.NEXT_PUBLIC_FRONTEND_HOST}:${process.env.NEXT_PUBLIC_FRONTEND_PORT}/payment-result/fail`, // url retour paiement refusé
+          vads_return_mode: "POST"
       },
-      // endpoint retournant la signature du formulaire, cf. dossier backend
+      
       credentials : {
+          // endpoint retournant la signature du formulaire, cf. dossier backend
           source: `http://${process.env.NEXT_PUBLIC_PAYMENT_WS_HOST}:${process.env.NEXT_PUBLIC_PAYMENT_WS_PORT}/credentials`
       }
     });

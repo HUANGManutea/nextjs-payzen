@@ -10,7 +10,7 @@ export default function Home() {
 
       <main>
         <h1>Payment Result</h1>
-        <div>Payé</div>
+        <div>FAIL</div>
       </main>
     </div>
   )
