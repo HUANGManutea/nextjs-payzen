@@ -10,7 +10,7 @@ export default class PaymentForm extends React.Component {
   }
 
   async pay(event) {
-    PayzenJS.go({		
+    PayzenJS.go({
       // plateforme Payzen à utiliser, ne pas changer
       target: "secure.osb.pf",
       // données du canvas où l'iframe sera intégré
