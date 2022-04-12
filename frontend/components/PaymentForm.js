@@ -16,8 +16,8 @@ export default class PaymentForm extends React.Component {
       // données du canvas où l'iframe sera intégré
       canvas: {
             id: "paymentCanvas", // id de la div cible
-            width: "1000px",
-            height: "1000px"
+            width: "1000px", // largeur de l'iframe
+            height: "1000px" // hauteur de l'iframe
       },
       /* données du formulaire,
       * cf. doc : https://secure.osb.pf/doc/fr-FR/form-payment/standard-payment/creer-un-paiement-comptant-immediat.html
