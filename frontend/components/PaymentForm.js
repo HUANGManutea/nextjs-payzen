@@ -27,7 +27,7 @@ export default class PaymentForm extends React.Component {
           vads_action_mode: "INTERACTIVE",
           vads_order_id: `TEST-${Math.round(Math.random() * 1000)}`,
           vads_site_id: process.env.NEXT_PUBLIC_PAYZEN_SITE_ID,
-          vads_ctx_mode: "TEST",
+          vads_ctx_mode: "TEST", // TEST | PRODUCTION
           vads_amount: "100",
           vads_currency: "953", // XPF
           vads_payment_cards: "", // laisser vide pour afficher tous les types de cartes
@@ -37,7 +37,7 @@ export default class PaymentForm extends React.Component {
           vads_redirect_error_timeout: 3, // timeout du redirect après paiement refusé
           vads_url_success: `http://${process.env.NEXT_PUBLIC_FRONTEND_HOST}:${process.env.NEXT_PUBLIC_FRONTEND_PORT}/payment-result/success`, // url retour paiement accepté
           vads_url_return: `http://${process.env.NEXT_PUBLIC_FRONTEND_HOST}:${process.env.NEXT_PUBLIC_FRONTEND_PORT}/payment-result/fail`, // url retour paiement refusé
-          vads_return_mode: "POST"
+          vads_return_mode: "POST" // valeur nécessaire pour que le mode d'affichage de la page de retour soit pris en compte
       },
       
       credentials : {
